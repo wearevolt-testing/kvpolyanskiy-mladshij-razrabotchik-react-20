@@ -1,14 +1,16 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
-import customersReducer from './reducers/customers-reducer';
-import productsReducer from './reducers/products-reducer';
+import {customers, customersHasErrored} from './reducers/customer-reducers';
+import {products} from './reducers/product-reducers';
 
 const reducers = combineReducers({
-	customers: customersReducer,
-	products: productsReducer
+	customers,
+	customersHasErrored,
+	products
 });
 
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(thunk, logger);
 
 export default createStore(reducers, middleware);

@@ -1,3 +1,4 @@
 node_modules/
 public/*.js
 *.sqlite
+npm-debug*
