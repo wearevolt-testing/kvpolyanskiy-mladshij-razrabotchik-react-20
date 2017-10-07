@@ -9,9 +9,7 @@ class Main extends React.Component {
 		return (
 			<div>
 				<Menu />
-				<Grid>
 					{this.props.children}
-				</Grid>
 				<Footer />
 			</div>
 		);
