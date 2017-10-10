@@ -1,6 +1,6 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
-import {Modal, Button, Well, Panel, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
 
 class CustomerEditor extends React.Component {
 	onChange(event) {

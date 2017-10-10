@@ -24,7 +24,7 @@ class Customers extends React.Component {
 	}
 
 	render() {
-		if (this.props.hasErroredGettingCustomers) {
+		if (this.props.hasErrored) {
     	return  <Alert bsStyle="danger">Something went wrong try again</Alert>;
     }
 
