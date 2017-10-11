@@ -5,7 +5,7 @@ import {Alert, Button, Col, Grid, Row, Table} from 'react-bootstrap';
 
 import AddCustomer from './add-customer';
 import UpdateCustomer from './update-customer';
-import DeleteCustomer from './delete-customer';
+import DeleteItem from '../delete-item';
 import {getCustomers, addCustomer, updateCustomer, deleteCustomer} from '../../actions/customers-actions';
 
 class Customers extends React.Component {
@@ -82,8 +82,9 @@ class Customers extends React.Component {
 					onHide={closeUpdateCustomer}
 					save={this.props.updateCustomer}
 				/>
-				<DeleteCustomer
-					customer={this.state.currentCustomer}
+				<DeleteItem
+					name={`customer (id: ${this.state.currentCustomer.id})`}
+					item={this.state.currentCustomer}
 					show={this.state.showDeleteCustomer}
 					onHide={closeDelteCustomer}
 					save={this.props.deleteCustomer}

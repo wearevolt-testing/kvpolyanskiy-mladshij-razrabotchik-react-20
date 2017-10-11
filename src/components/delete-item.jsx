@@ -2,9 +2,9 @@ import React from 'react';
 import {findDOMNode} from 'react-dom';
 import {Modal, Button} from 'react-bootstrap';
 
-class DeleteCustomer extends React.Component {
+class DeleteItem extends React.Component {
 	save() {
-		this.props.save(this.props.customer);
+		this.props.save(this.props.item);
 		this.close();
 	}
 	close() {
@@ -16,7 +16,7 @@ class DeleteCustomer extends React.Component {
     return (
         <Modal show={this.props.show} onHide={this.props.onHide}>
           <Modal.Header closeButton>
-            <Modal.Title>Delete customer</Modal.Title>
+            <Modal.Title>Delete {this.props.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
 						<h3>Are you sure?</h3>
@@ -30,4 +30,4 @@ class DeleteCustomer extends React.Component {
   }
 }
 
-export default DeleteCustomer;
+export default DeleteItem;

@@ -13,7 +13,6 @@ class Menu extends React.Component {
 		    </Navbar.Header>
 		    <Navbar.Collapse>
 		      <Nav>
-		        <NavItem eventKey={1} href="/invoices">Invoices</NavItem>
 		        <NavItem eventKey={2} href="/products">Products</NavItem>
 						<NavItem eventKey={2} href="/customers">Customers</NavItem>
 		      </Nav>

@@ -3,7 +3,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Alert, Button, Col, Grid, Row, Table} from 'react-bootstrap';
 
-import {getProducts} from '../../actions/products-actions';
+import {getProducts, addProduct, updateProduct, deleteProduct} from '../../actions/products-actions';
+import AddProduct from './add-product';
+import UpdateProduct from './update-product';
+import DeleteItem from '../delete-item';
 
 class Products extends React.Component {
 	constructor() {
@@ -26,12 +29,12 @@ class Products extends React.Component {
     }
 
 		const addProduct = () => this.setState({showAddProduct : true});
-		const closeAddPdoduct = () => this.setState({showAddProduct : false});
-		const updateProduct = (event, cust) => {
+		const closeAddProduct = () => this.setState({showAddProduct : false});
+		const updateProduct = (event, prod) => {
 			if (event.target.className === 'glyphicon glyphicon-trash') {
-				this.setState({showDeleteProduct : true, currentProduct: cust});
+				this.setState({showDeleteProduct : true, currentProduct: prod});
 			} else {
-				this.setState({showUpdateProduct : true, currentProduct: cust});
+				this.setState({showUpdateProduct : true, currentProduct: prod});
 			}
 		};
 		const closeUpdateProduct = () => this.setState({showUpdateProduct : false, currentProduct: {}});
@@ -70,6 +73,20 @@ class Products extends React.Component {
 						</tbody>
 					</Table>
 				</Row>
+				<AddProduct show={this.state.showAddProduct} onHide={closeAddProduct} save={this.props.addProduct}	/>
+				<UpdateProduct
+					product={this.state.currentProduct}
+					show={this.state.showUpdateProduct}
+					onHide={closeUpdateProduct}
+					save={this.props.updateProduct}
+				/>
+				<DeleteItem
+					name={`product (id: ${this.state.currentProduct.id})`}
+					item={this.state.currentProduct}
+					show={this.state.showDeleteProduct}
+					onHide={closeDelteProduct}
+					save={this.props.deleteProduct}
+				/>
 			</Grid>
 		);
 	}
@@ -83,7 +100,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({getProducts}, dispatch);
+	return bindActionCreators({getProducts, addProduct, updateProduct, deleteProduct}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
