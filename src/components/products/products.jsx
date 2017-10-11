@@ -21,6 +21,7 @@ class Products extends React.Component {
 
 	componentDidMount() {
 		this.props.getProducts();
+		document.title = "Products";
 	}
 
 	render() {

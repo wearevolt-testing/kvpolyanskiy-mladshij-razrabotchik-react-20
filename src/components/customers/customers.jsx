@@ -21,6 +21,7 @@ class Customers extends React.Component {
 
 	componentDidMount() {
 		this.props.getCustomers();
+		document.title = "Customers";
 	}
 
 	render() {

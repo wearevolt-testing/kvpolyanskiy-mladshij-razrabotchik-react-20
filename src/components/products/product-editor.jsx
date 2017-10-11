@@ -25,7 +25,8 @@ class ProductEditor extends React.Component {
 				<FormGroup controlId="price">
 					<ControlLabel>Price</ControlLabel>
 					<FormControl
-						type="text"
+						type="number"
+						step="0.01"
 						placeholder="Enter price"
 						ref="price"
 						defaultValue={this.props.product.price} />

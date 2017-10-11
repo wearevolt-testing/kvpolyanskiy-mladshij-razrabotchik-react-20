@@ -1,5 +1,4 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 
@@ -15,9 +14,14 @@ const reducers = combineReducers({
 });
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = applyMiddleware(thunk, logger, sagaMiddleware);
 
-const store = createStore(reducers, middleware);
+let middleware = [thunk, sagaMiddleware];
+if (process.env.NODE_ENV !== 'production') {
+  const logger = require('redux-logger').default;
+  middleware = [ ...middleware, logger];
+}
+
+const store = createStore(reducers, applyMiddleware(...middleware));
 
 sagaMiddleware.run(productsSaga);
 
